@@ -1,3 +1,5 @@
+/*Prints a table of squares using a for statement.*/
+
 #include <stdio.h>
 
 int
