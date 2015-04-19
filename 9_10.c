@@ -35,7 +35,7 @@ average(int a[], int n)
 	{
 		sum += a[i];
 	}
-	return = sum / n;
+	return sum / n;
 }
 
 int 

@@ -5,6 +5,8 @@ int evaluate_position(char board[8][8]);
 int
 evaluate_position(char board[8][8])
 {
+	int white = black = 0;
+	
 	for (i = 0; i < 8; i += 1)
 	{
 		for (j = 0; j < 8; j += 1)
@@ -20,8 +22,15 @@ evaluate_position(char board[8][8])
 							break;
 				case 'P':   white += 1;
 							break;
-				case
-				
+				case 'q':	black += 9;
+							break;
+				case 'r':	black += 5;
+							break;
+				case 'b':
+				case 'n': 	black += 3;
+							break;
+				case 'p': 	black += 1;
+							break;
 			}
 		}
 	}
