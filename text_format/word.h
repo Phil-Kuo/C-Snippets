@@ -8,6 +8,6 @@
  * 			  word if its length exceeds len.					*
  ****************************************************************/
  
-void read_word(char *word, int len);
+int read_word(char *word, int len);
 
 #endif
