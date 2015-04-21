@@ -26,7 +26,7 @@ main (int argc, char *argv[])
 		{
 			push(ch);
 		}
-		else if (ch == "}" && pop() == "{" || ch == ")" && pop() == "(")
+		else if (ch == '}' && pop() == '{' || ch == ')' && pop() == '(')
 		{
 			flag = true;
 		}
