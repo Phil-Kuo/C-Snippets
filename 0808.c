@@ -1,66 +1,58 @@
 #include <stdio.h>
 
+#define NUM_STUDENTS 5
+#define NUM_QUIZZ 5
+
 int
 main (int argc, char *argv[])
 {
-	int a[5][5], i, j, sum_row[5] = {0}, sum_col[5] = {0};
+	int a[NUM_STUDENTS][NUM_QUIZZ], student, quizz;
 	
-	for (i = 0; i < 5; i++)
+	for (student = 0; student < NUM_STUDENTS; student++)
 	{
-		printf("Enter scores of student %d: ", i + 1);
+		printf("Enter scores of student %d: ", student + 1);
 	
-		for (j = 0; j < 5; j++)
+		for (quizz = 0; quizz < NUM_QUIZZ; quizz++)
 		{
-			scanf("%d", &a[i][j]);
-			sum_row[i] += a[i][j];
+			scanf("%d", &a[student][quizz]);
 		}	
 	}
 	
-	int max[5] = {0}, min[5] = {0};
-	for (j = 0; j < 5; j++)
+	printf("Student Totals Average\n");
+	for (student = 0; student < NUM_STUDENTS; student++)
 	{
-		min[j] = a[0][i];
-		for (i = 0; i < 5; i++)
+		printf("%4d", student + 1);
+		int sum = 0;
+		for (quizz = 0; quizz < NUM_QUIZZ; quizz++)
 		{
-			sum_col[j] += a[i][j];
-			if (max[j] < a[i][j])
-			{
-				max[j] = a[i][j];
-			}
-			if (min[j] > a[i][j])
-			{
-				min[j] = a[i][j];
-			}
+			sum += a[student][quizz];
 		}
+		printf("%8d%8d\n", sum, sum / NUM_QUIZZ);
 	}
 	
-	printf("各人总分:");
-	for (i = 0; i < 5; i++)
+	printf("Quizz Average Highest Lowest\n");
+	for (quizz = 0; quizz < NUM_QUIZZ; quizz++)
 	{
-		printf(" %d", sum_row[i]);
+		printf("%3d", quizz + 1);
+		
+		int highest = a[0][quizz];
+		int lowest  = a[0][quizz];
+		int sum = 0;
+		
+		for (student = 0; student < NUM_STUDENTS; student++)
+		{
+			if (a[student][quizz] > highest)
+			{
+				highest = a[student][quizz];
+			}
+			if (a[student][quizz] < lowest)
+			{
+				lowest = a[student][quizz];
+			}
+			sum += a[student][quizz];
+		}
+		printf("%8d%8d%8d\n", sum / NUM_STUDENTS, highest, lowest);
 	}
 	
-	printf("\n各人平均分:");
-	for (i = 0; i < 5; i++)
-	{
-		printf(" %d", sum_row[i] / 5);
-	}
-	
-	printf("\n各科平均分:");
-	for (i = 0; i < 5; i++)
-	{
-		printf(" %d", sum_col[i] / 5);
-	}
-	printf("\n各科最高分:");
-	for (i = 0; i < 5; i++)
-	{
-		printf(" %d", max[i]);
-	}
-	printf("\n各科低分:");
-	for (i = 0; i < 5; i++)
-	{
-		printf(" %d", min[i]);
-	}
-	printf("\n");
 	return 0;
 }
