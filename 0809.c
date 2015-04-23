@@ -12,7 +12,7 @@ main (int argc, char *argv[])
 {
 	char a[ROW][COLUMN];
 	int row, column, direction, i, j, x, y;
-	bool restricted_flag[4] = {0};
+	
 	
 	for (row = 0; row < ROW; row++)
 	{
@@ -27,48 +27,55 @@ main (int argc, char *argv[])
 	for (row = 0, column = 0, a[0][0] = 'A', i = 1; i < 26;)
 	{
 		/*生成随机数——>确定移动方向——>判断移动方向是否有效——>执行移动直至结束*/
-		direction = rand() % 4;
-		switch (direction)
+		bool restricted_flag[4] = {0};
+		for (;;)
 		{
-			case 0: x = 1, y = 0;	break;
-			case 1: x = 0, y = 1;	break;
-			case 2: x = -1, y = 0;	break;
-			case 3: x = 0, y = -1;	break;
-		}
-		if (row + x < 0 || row + x >= ROW || column + y < 0 || column + y >= COLUMN || a[row+x][column+y] != '.' )
-		{
-			if (restricted_flag[direction])
+			direction = rand() % 4;
+			switch (direction)
 			{
-				for (j = 0; j < 4; j++)
+				case 0: x = 1, y = 0;	break;
+				case 1: x = 0, y = 1;	break;
+				case 2: x = -1, y = 0;	break;
+				case 3: x = 0, y = -1;	break;
+			}
+			if (row + x < 0 || row + x >= ROW || column + y < 0 || column + y >= COLUMN 
+			|| a[row+x][column+y] != '.' )
+			{
+				if (restricted_flag[direction])
 				{
-					if (restricted_flag[j])
+					for (j = 0; j < 4; j++)
 					{
-						continue;
+						if (restricted_flag[j])
+						{
+							continue;
+						}
+						else
+						{
+							break;
+						}
 					}
-					else
+					if (j == 4)
 					{
-						break;
+						printf("Terminate advance.\n");
+						return 0;				
 					}
-				}
-				if (j == 4)
-				{
-					printf("Terminate advance.\n");
-					break;				
-				}
 				
+				}
+				else
+				{
+					restricted_flag[direction] = true;
+				}
 			}
 			else
 			{
-				restricted_flag[direction] = true;
-			}
+				break;
+			}	
 		}
-		else
-		{
-			row = row + x;
-			column = column + y;
-			a[row][column] = 'A' + i;
-			i++;
-		}	
+
+		row = row + x;
+		column = column + y;
+		a[row][column] = 'A' + i;
+		i++;	
 	}
 	
 	for (row = 0; row < ROW; row++)
