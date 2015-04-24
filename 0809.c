@@ -7,6 +7,8 @@
 #define ROW 10
 #define COLUMN 10
 
+void result_print(char a[][COLUMN], int num_row);
+
 int
 main (int argc, char *argv[])
 {
@@ -57,6 +59,7 @@ main (int argc, char *argv[])
 					if (j == 4)
 					{
 						printf("Terminate advance.\n");
+						result_print(a, ROW);
 						return 0;				
 					}
 				
@@ -65,6 +68,7 @@ main (int argc, char *argv[])
 				{
 					restricted_flag[direction] = true;
 				}
+				
 			}
 			else
 			{
@@ -78,7 +82,16 @@ main (int argc, char *argv[])
 		i++;	
 	}
 	
-	for (row = 0; row < ROW; row++)
+	result_print(a, ROW);
+	
+	return 0;
+}
+
+void
+result_print(char a[][COLUMN], int num_row)
+{
+	int row, column;
+	for (row = 0; row < num_row; row++)
 	{
 		for (column = 0; column < COLUMN; column++)
 		{
@@ -86,8 +99,6 @@ main (int argc, char *argv[])
 		}
 		printf("\n");
 	}
-	
-	return 0;
 }
 /*		for (j = 0; j < 4; j++)*/
 /*		{*/
