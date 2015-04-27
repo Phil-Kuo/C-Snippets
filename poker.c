@@ -48,7 +48,7 @@ read_cards(void)
 	bool card_exists[NUM_RANKS][NUM_SUITS];
 	char ch, rank_ch, suit_ch;
 	int rank, suit;
-	bool bad_card = false;
+	bool bad_card;
 	int cards_read = 0;
 	
 	for (rank = 0; rank < NUM_RANKS; rank++)
@@ -67,6 +67,7 @@ read_cards(void)
 	
 	while (cards_read < NUM_CARDS)
 	{
+		bad_card = false;
 		printf("Enter a card: ");
 		
 		rank_ch = getchar();
