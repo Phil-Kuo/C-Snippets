@@ -1,29 +1,43 @@
 #include <stdio.h>
-
-int count_space(const char *s);
+#include <string.h>
 
 int
 main (int argc, char *argv[])
 {
-	char s[10];
 	
-	gets(s);
 	
-	printf("%d", count_space(s));
+	
+	
 	return 0;
 }
 
-int
-count_space(const char *s)
+
+int 
+strcmp_my_1(char *s, char *t)
 {
-	int count = 0;
+	int i;
 	
-	for (; *s != '\0'; s++)
+	for (i = 0; s[i] == t[i]; i++)
 	{
-		if (*s == ' ')
+		if (s[i] == '\0')
 		{
-			count++;
+			return 0;
 		}
 	}
-	return count;
+	return s[i] - t[i];
 }
+
+int 
+strcmp_my_2(char *s, char *t)
+{
+	
+	while (*s++ == *t++)
+	{
+		if (*s == '\0')
+		{
+			return 0;
+		}
+	}
+	return *s - *t;
+}
+
