@@ -5,7 +5,7 @@
 int
 main (int argc, char *argv[])
 {
-	int a[N] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	int a[N] = {1, 21, 3, 4, 5, 6, 17, 8, 9, 10};
 	int *p = &a[0], *q = &a[N-1], temp, i;
 	
 	while (p < q)

@@ -20,7 +20,7 @@ sum_two_dimensional_array(const int a[][LEN], int n)
 	int sum = 0;
 	const int *p;
 	
-	for (p = *a; p <= *(a + n - 1) + LEN -1; p += 1)
+	for (p = *a; p <= *(a + n - 1) + LEN -1; p++)
 	{
 		sum += *p;
 	}
