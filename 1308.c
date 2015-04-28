@@ -1,16 +1,28 @@
 #include <stdio.h>
 #include <ctype.h>
 
+int computer_scrabble_value(const char *word);
+
 int
 main (int argc, char *argv[])
 {
-	int value = 0;
-	char ch;
+	char word[10];
 	
 	printf("Enter a word: ");
-	while ((ch = getchar()) != '\n')
+	scanf("%s", word);
+	
+	printf("Scrabble value: %d\n", computer_scrabble_value(word));
+	return 0;
+}
+
+int 
+computer_scrabble_value(const char *word)
+{
+	int value = 0;
+	
+	while (*word)
 	{
-		switch (toupper(ch))
+		switch (toupper(*word++))
 		{
 			case 'D': case 'G': 							  value += 2; break;
 			case 'B': case 'C': case 'M': case 'P': 		  value += 3; break;
@@ -22,12 +34,6 @@ main (int argc, char *argv[])
 		}
 	}
 	
-	printf("Scrabble value: %d\n", value);
-	return 0;
+	return value;
 }
 
-int 
-computer_scrabble_value(const char *word)
-{
-	
-}
