@@ -5,6 +5,7 @@
 
 #define N 50
 
+int read_line(char *str, int n);
 void reverse(char *message);
 
 /************************************
@@ -19,7 +20,7 @@ main (int argc, char *argv[])
 	
 	printf("Enter a message: ");
 	read_line(message, N);
-	
+	reverse(message);
 	printf("%s\n", message);
 	
 	return 0;
@@ -44,12 +45,12 @@ read_line(char *str, int n)
 void 
 reverse(char *message)
 {
-	char *p1 = message, *p2 = message + strlen(message);
+	char *p1 = message, *p2 = message + strlen(message)-1, tmp;
 	
-	for (; p1 != p2; p1++, p2--)
+	for (; p1 < p2; p1++, p2--)
 	{
 		tmp = *p1;
 		*p1 = *p2;
 		*p2 = tmp;
-	} 
+	}
 }
