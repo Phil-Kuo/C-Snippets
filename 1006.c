@@ -16,7 +16,8 @@ char contents[STACK_SIZE];
 int
 main (int argc, char *argv[])
 {
-	char ch, result;
+	char ch;
+	int oprand1, oprand2;
 	
 	for (;;)
 	{
@@ -31,20 +32,22 @@ main (int argc, char *argv[])
 			{
 				push(ch);
 			}
-			else if (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '=')
+			else if (ch == '+' || ch == '-' || ch == '*' || ch == '/')
 			{
+				oprand1 = pop() - 48;
+				oprand2 = pop() - 48;
 				switch (ch)
 				{
-					case '+': push(pop() + pop()); break;
-					case '-': push(pop() - pop()); break;
-					case '*': push(pop() * pop()); break;
-					case '/': push(pop() / pop()); break;
-					case '=': result = pop(); printf("Value of expression: %c\n", result); break;
+					case '+': push(oprand1 + oprand2 + 48); break;
+					case '-': push(oprand1 - oprand2 + 48); break;
+					case '*': push(oprand1 * oprand2 + 48); break;
+					case '/': push(oprand1 / oprand2 + 48); break;
+					
 				}
 			}
-			else
+			else if (ch == '=')
 			{
-				return 0;
+				printf("Value of expression: %c\n", pop()); break; 
 			}
 		}
 		
