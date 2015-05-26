@@ -19,18 +19,18 @@ main (int argc, char *argv[])
 	  
 	struct student Stu[N];
 	
-	scanf("%d", &n);
-	for (i = 0; i < n; i++)
-	{
-		scanf("%s %d %d", Stu[i].name, &Stu[i].age, &Stu[i].score);
-	}
+	while(scanf("%d", &n) != EOF)
+		for (i = 0; i < n; i++)
+		{
+			scanf("%s %d %d", Stu[i].name, &Stu[i].age, &Stu[i].score);
+		}
 	
-	qsort(Stu, n, sizeof(struct student), cmp);
+		qsort(Stu, n, sizeof(struct student), cmp);
 	
-	for (i = 0; i < n; i++)
-	{
-		printf("%s %d %d\n", Stu[i].name, Stu[i].age, Stu[i].score);
-	}
+		for (i = 0; i < n; i++)
+		{
+			printf("%s %d %d\n", Stu[i].name, Stu[i].age, Stu[i].score);
+		}
 	return 0;
 }
 
