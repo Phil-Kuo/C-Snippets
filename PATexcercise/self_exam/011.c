@@ -15,7 +15,7 @@ main (int argc, char *argv[])
 	{
 		scanf("%d", &a[i]);
 	}
-	max_of_sum = max_sum_of_subsequence(a, n);
+	max_of_sum = max_sum_of_subsequence(a, n, &first, &last);
 	printf("%d\n", max_of_sum);
 	return 0;
 }
