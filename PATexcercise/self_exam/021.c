@@ -11,10 +11,10 @@ main (int argc, char *argv[])
 		int coefficient, exponent;
 	};
 	
-	int n, i = 0, length, j, k;
+	int i = 0, length, j;
 	struct polynominal *a;
 	
-	a = malloc((length) * sizeof(struct polynominal));
+	a = malloc(N * sizeof(struct polynominal));
 	if (a == NULL)
 	{
 		printf("Error!\n");
